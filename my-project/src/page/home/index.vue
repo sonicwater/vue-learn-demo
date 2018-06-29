@@ -1,22 +1,22 @@
 <template>
   	<div class="home_container">
           <!-- <itemcontainer father-component="home"></itemcontainer> -->
-          {{home}}
-          <span v-bind:title="message">
-              鼠标悬停几秒钟查看此处动态绑定的提示信息！
-          </span>
+          <todoItem todo="home"></todoItem>
     </div>
 </template>
 
 <script>
+import todoItem from '../../components/todo-item'
 // import itemcontainer from '../../components/itemcontainer'
 
 export default {
 	  name: 'home',
+    components: {
+      todoItem
+    },
     data(){
         return {
-            home : "sonic",
-            message: '页面加载于 ' + new Date().toLocaleString()
+
         }
     }
   	// components: {
@@ -29,5 +29,10 @@ export default {
 </script>
 
 <style scoped>
-  
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
 </style>
