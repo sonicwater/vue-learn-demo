@@ -1,7 +1,13 @@
 <template>
   	<div class="home_container">
-          <!-- <itemcontainer father-component="home"></itemcontainer> -->
-          <todoItem todo="home"></todoItem>
+        <!-- <itemcontainer father-component="home"></itemcontainer> -->
+        {{ number + 1 }}
+
+        {{ ok ? 'YES' : 'NO' }}
+
+        {{ message.split('').reverse().join('') }}
+
+        <div v-bind:id="'list-' + id"></div>
     </div>
 </template>
 
@@ -11,11 +17,12 @@ import todoItem from '../../components/todo-item'
 
 export default {
 	  name: 'home',
-    components: {
-      todoItem
-    },
     data(){
         return {
+            number : 1,
+            ok : true,
+            message : "sonic",
+            id : 6
 
         }
     }

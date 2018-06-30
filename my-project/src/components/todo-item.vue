@@ -9,10 +9,9 @@ export default {
     name: 'todo-item',
     data(){
         return {
-            todos: this.props[0]
+            todos: this.props
         }
-    },
-    props: ['todo']
+    }
 }
 </script>
 
