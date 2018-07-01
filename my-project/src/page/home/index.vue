@@ -8,6 +8,15 @@
         {{ message.split('').reverse().join('') }}
 
         <div v-bind:id="'list-' + id"></div>
+
+        <a v-bind:href="url">...</a>
+
+        <a href="javascript:;" @click="doSomething">...</a>
+
+        <form v-on:submit.prevent="onSubmit">
+          
+          <input type="submit" value="submit" />
+        </form>
     </div>
 </template>
 
@@ -17,12 +26,21 @@ import todoItem from '../../components/todo-item'
 
 export default {
 	  name: 'home',
+    methods:{
+      doSomething(){
+        alert(1);
+      },
+      onSubmit(){
+        alert(123);
+      }
+    },
     data(){
         return {
             number : 1,
             ok : true,
             message : "sonic",
-            id : 6
+            id : 6,
+            url : "www.baidu.com"
 
         }
     }
