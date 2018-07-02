@@ -1,22 +1,9 @@
 <template>
   	<div class="home_container">
         <!-- <itemcontainer father-component="home"></itemcontainer> -->
-        {{ number + 1 }}
-
-        {{ ok ? 'YES' : 'NO' }}
-
-        {{ message.split('').reverse().join('') }}
-
-        <div v-bind:id="'list-' + id"></div>
-
-        <a v-bind:href="url">...</a>
-
-        <a href="javascript:;" @click="doSomething">...</a>
-
-        <form v-on:submit.prevent="onSubmit">
-          
-          <input type="submit" value="submit" />
-        </form>
+        <div class="static"
+             v-bind:class="classObject">123
+        </div>
     </div>
 </template>
 
@@ -27,23 +14,18 @@ import todoItem from '../../components/todo-item'
 export default {
 	  name: 'home',
     methods:{
-      doSomething(){
-        alert(1);
-      },
-      onSubmit(){
-        alert(123);
+      getAnswer() {
+
       }
     },
     data(){
         return {
-            number : 1,
-            ok : true,
-            message : "sonic",
-            id : 6,
-            url : "www.baidu.com"
-
+            classObject: {
+              'active': true,
+              'text-danger': false
+            }
         }
-    }
+    },
   	// components: {
   	// 	  itemcontainer
   	// },

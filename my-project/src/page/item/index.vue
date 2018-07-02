@@ -1,7 +1,10 @@
 <template>
   	<div>
     	  <!-- <itemcontainer father-component="item"></itemcontainer> -->
-        item
+        <div id="example">
+          <p>Original message: "{{ message }}"</p>
+          <p>Computed reversed message: "{{ reversedMessage }}"</p>
+        </div>
   	</div>
 </template>
 
@@ -9,14 +12,17 @@
 // import itemcontainer from '../../components/itemcontainer'
 
 export default {
-	  // name: 'item',
-  	// components: {
-   // 		itemcontainer
-  	// },
-  	// created(){
-   //    //进入题目页面，开始计时
-  	// 	this.$store.commit('REMBER_TIME');
-  	// }
+	  name: 'item',
+  	data: {
+      message: 'Hello'
+    },
+    computed: {
+      // 计算属性的 getter
+      reversedMessage: function () {
+        // `this` 指向 vm 实例
+        return this.message.split('').reverse().join('')
+      }
+    }
 }
 
 </script>
