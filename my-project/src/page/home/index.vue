@@ -1,9 +1,13 @@
 <template>
   	<div class="home_container">
         <!-- <itemcontainer father-component="home"></itemcontainer> -->
-        <div class="static"
-             v-bind:class="classObject">123
-        </div>
+        <div v-bind:class="[isActive ? activeClass : '', errorClass]">123</div>
+        <todo-item></todo-item>
+        <ul>
+          <li v-for="(item, index) of items" :key="item.id">
+            {{index}} , {{ item.message }}
+          </li>
+        </ul>
     </div>
 </template>
 
@@ -18,12 +22,18 @@ export default {
 
       }
     },
+    components:{
+      'todo-item': todoItem,
+    },
     data(){
         return {
-            classObject: {
-              'active': true,
-              'text-danger': false
-            }
+            isActive:false,
+            activeClass: 'active',
+            errorClass: 'text-danger',
+            items: [
+              { message: 'Foo',id:0 },
+              { message: 'Bar',id:1 }
+            ]
         }
     },
   	// components: {
