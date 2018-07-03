@@ -3,6 +3,7 @@
     	<p>
 			<router-link to="/">home</router-link>
 	    	<router-link to="/item">item</router-link>
+	    	<router-link to="/score">score</router-link>
     	</p>
         <router-view></router-view>
     </div>

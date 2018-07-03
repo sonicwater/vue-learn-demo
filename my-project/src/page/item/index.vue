@@ -1,20 +1,20 @@
 <template>
-  	<my-component>555</my-component>
+  	<myComponent class="mc"></myComponent>
 </template>
 
 <script>
 import myComponent from '../../components/my-component'
 
 export default {
-	  name: 'todo-item',
+	name: 'todo-item',
   	data(){
-      return{
+      	return{
 
-      }
+      	}
       
     },
     components:{
-      'my-component': myComponent,
+      	myComponent,
     },
 }
 
