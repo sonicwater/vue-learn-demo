@@ -2,7 +2,8 @@
 	<div>
 		<h3>{{ id }}:{{title}}</h3>
 		<p>{{title1}}</p>
-		<p>{{normalizedSize}}</p>
+		<p v-on:my-event="doSomething">{{normalizedSize}}</p>
+		<input type="text" name="" v-on:focus.native="onFocus" />
 	</div>
 </template>
 
@@ -24,7 +25,15 @@ export default {
         	title1 : this.title
         }
     },
-	computed: {
+    methods:{
+        doSomething(){
+            alert(1);
+        },
+        onFocus(){
+        	console.log("focus");
+        }
+    },
+    computed: {
 	  	normalizedSize() {
 	    	return this.title.trim().toUpperCase()
 	  	}

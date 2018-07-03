@@ -1,7 +1,7 @@
 <template>
   	<div>
 
-        <scoreComponent v-bind="post"></scoreComponent>
+        <scoreComponent v-bind="post" class="on"></scoreComponent>
   	</div>
 </template>
 
@@ -17,9 +17,14 @@ export default {
             }
         }
     },
+    methods:{
+        doSomething(){
+            alert(1);
+        }
+    },
     components:{
         scoreComponent,
-    },
+    }
 }
 
 </script>
