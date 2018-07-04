@@ -1,21 +1,17 @@
 <template>
-  	<myComponent class="mc"></myComponent>
+  	<div>123</div>
 </template>
 
 <script>
-import myComponent from '../../components/my-component'
 
 export default {
-	name: 'todo-item',
+	name: 'item',
   	data(){
       	return{
 
       	}
       
-    },
-    components:{
-      	myComponent,
-    },
+    }
 }
 
 </script>

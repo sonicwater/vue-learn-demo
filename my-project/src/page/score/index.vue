@@ -1,29 +1,16 @@
 <template>
   	<div>
-
-        <scoreComponent v-bind="post" class="on"></scoreComponent>
+        456
   	</div>
 </template>
 
 <script>
-import scoreComponent from '../../components/score-component'
 export default {
     name: 'score',
     data(){
         return{
-            post: {
-                id: 1,
-                title: 'My Journey with Vue'
-            }
+            
         }
-    },
-    methods:{
-        doSomething(){
-            alert(1);
-        }
-    },
-    components:{
-        scoreComponent,
     }
 }
 
