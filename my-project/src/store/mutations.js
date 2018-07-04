@@ -7,6 +7,8 @@ export default {
 		state.num += num;
 	},
 	[JIAN](state, num) {
-		state.num -= num;
+		if( state.num > 1 ){
+			state.num -= num;
+		}
 	}
 }

@@ -1,8 +1,8 @@
 <template>
   	<div>
   		<header class="top_tips">
-    		<span class="num_tip" v-if="fatherComponent == 'home'">123</span>
-    		<span class="num_tip" v-if="fatherComponent == 'item'">456</span>
+    		<span class="num_tip" v-if="fatherComponent == 'home'">home</span>
+    		<span class="num_tip" v-if="fatherComponent == 'item'">item</span>
     	</header>
     	<input type="button" v-on:click="jian" value="-" />
     	{{ num }}

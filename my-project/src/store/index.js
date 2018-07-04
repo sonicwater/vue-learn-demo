@@ -13,7 +13,7 @@ const state = {
 
 	// }]
 
-	num : 22
+	num : 2
 }
 
 
