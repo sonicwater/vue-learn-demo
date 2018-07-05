@@ -1,8 +1,8 @@
 <template>
   	<div>
-  		<header class="top_tips">
-    		<span class="num_tip" v-if="fatherComponent == 'home'">{{level}}</span>
-    		<span class="num_tip" v-if="fatherComponent == 'item'">题目{{itemNum}}</span>
+  		<header>
+    		<span v-if="fatherComponent == 'home'">{{level}}</span>
+    		<span v-if="fatherComponent == 'item'">题目{{itemNum}}</span>
     	</header>
 		<div v-if="fatherComponent == 'home'" >
     		<router-link to="item"> 开始答题 </router-link>
@@ -11,14 +11,16 @@
 			<div v-if="itemDetail.length > 0">
 				<header>{{itemDetail[itemNum-1].topic_name}}</header>
 				<ul>
-					<li v-bind:class="{'has_choosed':choosedNum==index}" v-for="(item, index) in itemDetail[itemNum-1].topic_answer" @click="choosed(index, item.topic_answer_id)" class="item_list">
+					<li v-bind:class="{'has_choosed':choosedNum==index}" v-for="(item, index) in itemDetail[itemNum-1].topic_answer" @click="choosed(index, item.topic_answer_id)">
 						<span>{{chooseType(index)}}</span>
 						<span>{{item.answer_name}}</span>
+						<span>| {{choosedNum}}</span>
+						<span>| {{choosedId}}</span>
 					</li>
 				</ul>
 			</div>
-    		<span class="next_item button_style" @click="nextItem" v-if="itemNum < itemDetail.length"> 下一题 </span>
-    		<span class="submit_item button_style" v-else @click="submitAnswer"> 交卷！ </span>
+    		<span @click="nextItem" v-if="itemNum < itemDetail.length"> 下一题 </span>
+    		<span v-else @click="submitAnswer"> 交卷！ </span>
     	</div>
   	</div>
 </template>
@@ -29,7 +31,7 @@ export default {
 	name: 'itemcontainer',
 	data() {
 		return {
-			itemId: null, //题目ID
+			// itemId: null, //题目ID
 			choosedNum: null, //选中答案索引
 			choosedId:null //选中答案id
 		}
@@ -39,7 +41,6 @@ export default {
 	  	'itemNum', //第几题
   		'level', //第几周
   		'itemDetail', //题目详情
-  		'timer', //计时器
 	]),
 	methods: {
   		...mapActions([
@@ -73,7 +74,6 @@ export default {
 	  	submitAnswer(){
 	  		if (this.choosedNum !== null) {
 	  			this.addNum(this.choosedId)
-	  			clearInterval(this.timer)
 	  			this.$router.push('score')
   			}else{
   				alert('您还没有选择答案哦')
