@@ -1,26 +1,30 @@
 <template>
   	<div>
-		<container father-component="cart"></container>
-  	</div>
+  		<layout page="cart"></layout>
+    </div>
 </template>
 
 <script>
-
-import container from '../../components/container'
+import layout from '../../components/layout'
 
 export default {
 	name: 'cart',
-  	components: {
-   		container
+  	data() {
+		return {
+		}
+	},
+	components: {
+  		layout
   	},
-  	created(){
-      
-  	}
-}
+	methods: {
 
+    },
+    created(){
+        
+    }
+}
 </script>
 
-<style>
-    
+<style scoped>
 
 </style>

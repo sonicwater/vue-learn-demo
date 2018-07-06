@@ -1,17 +1,24 @@
 <template>
   	<div>
-        <container father-component="home"></container>
+  		<layout page="home"></layout>
     </div>
 </template>
 
 <script>
-import container from '../../components/container'
+import layout from '../../components/layout'
 
 export default {
 	name: 'home',
-  	components: {
-  		container
-  	},
+  	data() {
+		return {
+		}
+	},
+  components: {
+    layout
+  },
+	methods: {
+
+    },
     created(){
         
     }
@@ -19,5 +26,5 @@ export default {
 </script>
 
 <style scoped>
-    
+
 </style>
