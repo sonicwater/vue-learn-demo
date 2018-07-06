@@ -1,13 +1,15 @@
 import App from '../App'
+import Home from '../page/home'
+import Cart from '../page/cart'
 
 export default [{
     path: '/',
     component: App,
     children: [{
-        path: '',
-        component: r => require.ensure([], () => r(require('../page/home')), 'home')
+        path: '/',
+        component: Home
     }, {
         path: '/cart',
-        component: r => require.ensure([], () => r(require('../page/cart')), 'cart')
+        component: Cart
     }]
 }]
