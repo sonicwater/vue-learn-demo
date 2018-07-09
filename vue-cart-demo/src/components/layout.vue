@@ -12,7 +12,7 @@
 			        	<i class="el-icon-goods"></i>
 			        	<span slot="title">
 			        		cart
-			        		<el-badge class="mark" v-if="numTotal>0" :value="numTotal" />
+			        		<el-badge class="mark" :value="totalPrice" />
 			        	</span>
 			        	
 			        	
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 
 export default {
 	name: 'layout',
@@ -49,12 +49,9 @@ export default {
 		}
 	},
 	computed:{
-		...mapState({
-			goodList : state => state.goodList
-		}),
-		numTotal () {
-	    	return this.$store.state.numTotal 
-	   	}
+		...mapGetters([
+			'goodList','totalPrice'
+		])
 	},
 	methods: {
 		tableRowClassName({row, rowIndex}) {
@@ -73,7 +70,7 @@ export default {
         
     },
     mounted(){
-        console.log(this.goodList)
+        console.log(this.totalPrice)
     }
 }
 </script>
