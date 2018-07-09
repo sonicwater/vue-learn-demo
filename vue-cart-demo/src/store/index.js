@@ -32,14 +32,25 @@ const getters = {
     //商品列表
     goodList : state => state.good_list,
 
-    //计算总价
-    totalPrice : ( state, getters ) => {
-        let tp = 0;
-        getters.goodList.forEach( ( item ) => {
-            tp += parseFloat( item.price );
+    //购物车的列表
+    cartProducts:state=>{
+        return state.added.map(({id,num})=>{
+            let product = state.good_list.find(n=>n.id == id)
+            // console.info('product',product)
+            return {
+                ...product,
+                num
+            }
         })
-        console.info('tp',tp);
-        return tp
+    },
+
+    //计算总数量
+    totalNum:(state,getters)=>{
+        let total = 0;
+        getters.cartProducts.forEach(n=>{
+            total += n.num
+        })
+        return total;
     },
 }
 

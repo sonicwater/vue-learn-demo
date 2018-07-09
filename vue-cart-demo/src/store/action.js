@@ -1,5 +1,7 @@
 export default {
-	addToCart({ commit }) {
-		commit('ADD_TO_CART', id);
+	addToCart({ commit },product) {
+		commit('ADD_TO_CART',{
+            id:product.id
+        })
 	},
 }

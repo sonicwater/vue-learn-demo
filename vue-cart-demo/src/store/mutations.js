@@ -1,7 +1,14 @@
-const ADD_TO_CART = 'ADD_TO_CART'
 export default {
-	[ADD_TO_CART](state) {
-		// state.itemNum = 1;
-		// state.answerid = [];
+	ADD_TO_CART(state,{id}) {
+		console.log("111"+JSON.stringify(state.added))
+		let record = state.added.find(n=>n.id==id);
+        if(!record){
+            state.added.push({
+                id,
+                num:1
+            })
+        }else {
+            record.num++
+        }
 	},
 }
