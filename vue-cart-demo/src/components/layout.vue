@@ -12,7 +12,7 @@
 			        	<i class="el-icon-goods"></i>
 			        	<span slot="title">
 			        		cart
-			        		<el-badge class="mark" :value="totalNum" />
+			        		<el-badge class="mark" v-if="totalNum" :value="totalNum" />
 			        	</span>
 			        	
 			        	
@@ -22,17 +22,8 @@
 		  	<el-main>
 		  		<span v-if="page == 'home'">商品列表</span>
 		  		<span v-if="page == 'cart'">购物车</span>
-				<el-table v-if="page == 'home'" :data="goodList" style="width: 100%">
-				    <el-table-column prop="id" label="商品ID" width="180"></el-table-column>
-				    <el-table-column prop="name" label="商品名称" width="180"></el-table-column>
-				    <el-table-column prop="price" label="单价" width="180"></el-table-column>
-				    <el-table-column label="操作">
-				    	<template slot-scope="scope">
-					        <el-button type="primary" size="mini" @click="addToCart( scope.row )">加入购物车</el-button>
-				    		
-					    </template>
-				    </el-table-column>
-				</el-table>
+				<Goods v-if="page == 'home'"></Goods>
+				<Cart v-if="page == 'cart'"></Cart>
 		  	</el-main>
 		</el-container>
     </div>
@@ -40,6 +31,8 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
+import Goods from './goods'
+import Cart from './cart'
 
 export default {
 	name: 'layout',
@@ -49,6 +42,10 @@ export default {
 			
 		}
 	},
+	components: {
+    	Goods,
+    	Cart
+  	},
 	computed:{
 		...mapGetters([
 			'goodList','totalNum'
