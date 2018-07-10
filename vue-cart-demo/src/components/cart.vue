@@ -1,11 +1,19 @@
 <template>
-  	<div>
-		购物车
-    </div>
+  	<el-table :data="cartProducts" style="width: 100%">
+	    <el-table-column prop="id" label="商品ID" width="180"></el-table-column>
+	    <el-table-column prop="name" label="商品名称" width="180"></el-table-column>
+	    <el-table-column prop="num" label="数量" width="180"></el-table-column>
+	    <el-table-column prop="price" label="单价" width="180"></el-table-column>
+	    <el-table-column label="操作">
+	    	<template slot-scope="scope">
+		        <el-button type="primary" size="mini" @click="delProduct( scope.row )">删除</el-button>
+		    </template>
+	    </el-table-column>
+	</el-table>
 </template>
 
 <script>
-// import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 
 export default {
 	name: 'cart',
@@ -15,12 +23,12 @@ export default {
 		}
 	},
 	computed:{
-		// ...mapGetters([
-		// 	'goodList','totalNum'
-		// ])
+		...mapGetters([
+			'cartProducts'
+		])
 	},
 	methods: {
-		// ...mapActions(['addToCart'])
+		...mapActions(['delProduct'])
     },
     created(){
         
