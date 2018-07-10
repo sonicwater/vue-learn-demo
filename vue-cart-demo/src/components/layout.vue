@@ -8,20 +8,17 @@
 			        	<span slot="title">home</span>
 			      	</el-menu-item>
 			      	<el-menu-item index="/cart">
-
 			        	<i class="el-icon-goods"></i>
 			        	<span slot="title">
 			        		cart
 			        		<el-badge class="mark" v-if="totalNum" :value="totalNum" />
 			        	</span>
-			        	
-			        	
 			      	</el-menu-item>
 			    </el-menu>
 		  	</el-aside>
 		  	<el-main>
-		  		<span v-if="page == 'home'">商品列表</span>
-		  		<span v-if="page == 'cart'">购物车</span>
+		  		<el-tag v-if="page == 'home'">商品列表</el-tag>
+		  		<el-tag v-if="page == 'cart'">购物车</el-tag>
 				<Goods v-if="page == 'home'"></Goods>
 				<Cart v-if="page == 'cart'"></Cart>
 		  	</el-main>

@@ -39,7 +39,8 @@ const getters = {
             // console.info('product',product)
             return {
                 ...product,
-                num
+                num,
+                total_num:(product.price*num).toFixed(2)
             }
         })
     },
