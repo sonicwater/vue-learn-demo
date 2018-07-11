@@ -30,23 +30,33 @@ const state = {
 const getters = {
 
     //商品列表
-    goodList : state => state.good_list,
+    goodList : state =>{
+        return state.good_list.map( item => {
+            return {
+                id : item.id,
+                name : item.name,
+                price : item.price.toFixed(2)
+            }
+        })
+    } ,
 
     //购物车的列表
-    cartProducts:state=>{
+    cartProducts : state=>{
         return state.added.map(({id,num})=>{
             let product = state.good_list.find(n=>n.id == id)
             // console.info('product',product)
             return {
-                ...product,
+                id : product.id,
+                name : product.name,
+                price : product.price.toFixed(2),
                 num,
-                total_num:(product.price*num).toFixed(2)
+                total_num : (product.price*num).toFixed(2)
             }
         })
     },
 
     //计算总数量
-    totalNum:(state,getters)=>{
+    totalNum : (state,getters)=>{
         let total = 0;
         getters.cartProducts.forEach(n=>{
             total += n.num
