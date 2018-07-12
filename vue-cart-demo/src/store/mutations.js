@@ -10,6 +10,10 @@ export default {
             record.num++
         }
 	},
+    //清除购物车
+    CLEAR(state){
+        state.added = []
+    },
     //删除购物车的指定的商品
     DELETE(state,product){
         //console.info(state,product)

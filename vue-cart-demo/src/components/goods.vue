@@ -5,7 +5,7 @@
 	    <el-table-column prop="price" label="单价" width="180"></el-table-column>
 	    <el-table-column label="操作">
 	    	<template slot-scope="scope">
-		        <el-button size="mini" icon="el-icon-plus" @click="addToCart( scope.row )">加入购物车</el-button>
+		        <el-button size="mini" type="primary" icon="el-icon-plus" @click="addToCart( scope.row )">加入购物车</el-button>
 	    		
 		    </template>
 	    </el-table-column>

@@ -8,11 +8,13 @@
 		    <el-table-column prop="total_num" label="总价" width="180"></el-table-column>
 		    <el-table-column label="操作">
 		    	<template slot-scope="scope">
-			        <el-button type="danger" icon="el-icon-delete" size="mini" @click="dialogVisibleTrue( scope.row )">删除</el-button>
+			        <el-button type="danger" plain icon="el-icon-delete" size="mini" @click="dialogVisibleTrue( scope.row )">删除</el-button>
 			        <!--@click="delProduct( scope.row )"-->
 			    </template>
 		    </el-table-column>
 		</el-table>
+
+		<Info v-if="totalNum"></Info>
 
 		<el-dialog title="注意" :visible.sync="dialogVisible" width="20%">
 		  	<span>确定要删除这个商品吗?</span>
@@ -27,6 +29,7 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
+import Info from './info'
 
 export default {
 	name: 'cart',
@@ -38,9 +41,12 @@ export default {
 	},
 	computed:{
 		...mapGetters([
-			'cartProducts'
+			'cartProducts','totalNum'
 		])
 	},
+	components: {
+    	Info
+  	},
 	methods: {
 		...mapActions(['delProduct']),
 		dialogVisibleTrue( data ){

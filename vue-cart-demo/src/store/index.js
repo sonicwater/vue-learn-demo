@@ -55,6 +55,15 @@ const getters = {
         })
     },
 
+    //计算总价
+    totalPrice:(state,getters)=>{
+        let total = 0;
+        getters.cartProducts.forEach(n=>{
+            total += n.price * n.num
+        })
+        return total.toFixed(2);
+    },
+
     //计算总数量
     totalNum : (state,getters)=>{
         let total = 0;
