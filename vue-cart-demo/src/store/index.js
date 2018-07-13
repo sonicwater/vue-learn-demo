@@ -43,7 +43,7 @@ const getters = {
     //购物车的列表
     cartProducts : state=>{
         return state.added.map(({id,num})=>{
-            let product = state.good_list.find(n=>n.id == id)
+            let product = state.good_list.find( item => item.id == id )
             // console.info('product',product)
             return {
                 id : product.id,
@@ -58,8 +58,8 @@ const getters = {
     //计算总价
     totalPrice:(state,getters)=>{
         let total = 0;
-        getters.cartProducts.forEach(n=>{
-            total += n.price * n.num
+        getters.cartProducts.forEach( item => {
+            total += item.price * item.num
         })
         return total.toFixed(2);
     },
@@ -67,8 +67,8 @@ const getters = {
     //计算总数量
     totalNum : (state,getters)=>{
         let total = 0;
-        getters.cartProducts.forEach(n=>{
-            total += n.num
+        getters.cartProducts.forEach( item => {
+            total += item.num
         })
         return total;
     },

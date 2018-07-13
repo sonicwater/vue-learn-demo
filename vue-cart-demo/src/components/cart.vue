@@ -3,13 +3,16 @@
 		<el-table :data="cartProducts" style="width: 100%">
 		    <el-table-column prop="id" label="商品ID" width="180"></el-table-column>
 		    <el-table-column prop="name" label="商品名称" width="180"></el-table-column>
-		    <el-table-column prop="num" label="数量" width="180"></el-table-column>
+		    <el-table-column label="数量" width="180">
+		    	<template slot-scope="scope">
+					<el-input-number size="mini" :min="1" :value="scope.row.num" @change="handleChange"></el-input-number>
+		    	</template>
+		    </el-table-column>
 		    <el-table-column prop="price" label="单价" width="180"></el-table-column>
 		    <el-table-column prop="total_num" label="总价" width="180"></el-table-column>
-		    <el-table-column label="操作">
+		    <el-table-column label="操作" width="180">
 		    	<template slot-scope="scope">
 			        <el-button type="danger" plain icon="el-icon-delete" size="mini" @click="dialogVisibleTrue( scope.row )">删除</el-button>
-			        <!--@click="delProduct( scope.row )"-->
 			    </template>
 		    </el-table-column>
 		</el-table>
@@ -48,7 +51,7 @@ export default {
     	Info
   	},
 	methods: {
-		...mapActions(['delProduct']),
+		...mapActions(['delProduct','numChange']),
 		dialogVisibleTrue( data ){
 			this.dialogVisible = true;
 			this.result = data;
@@ -56,6 +59,10 @@ export default {
 		dialogSure(){
 			this.delProduct( this.result );
         	this.dialogVisible = false;
+      	},
+      	handleChange( value ) {
+        	console.log(value);
+        	this.numChange( value );
       	}
     },
     created(){
@@ -68,4 +75,6 @@ export default {
 </script>
 
 <style scoped>
+	.el-table th>.cell{text-align: center;}
+	.el-table td>.cell{text-align: center;}
 </style>

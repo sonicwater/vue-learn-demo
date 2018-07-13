@@ -6,6 +6,12 @@ export default {
         })
 	},
 
+    numChange({ commit },value,product) {
+        commit('NUM_CHANGE',{
+            id:product.id
+        })
+    },
+
 	//清除购物车
     clearAllCart({commit}){
         commit('CLEAR')
