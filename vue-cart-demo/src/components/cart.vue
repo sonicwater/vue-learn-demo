@@ -5,7 +5,7 @@
 		    <el-table-column prop="name" label="商品名称" width="180"></el-table-column>
 		    <el-table-column label="数量" width="180">
 		    	<template slot-scope="scope">
-					<el-input-number size="mini" :min="1" :value="scope.row.num" @change="handleChange"></el-input-number>
+					<el-input-number size="mini" :min="1" :value="scope.row.num" v-on:input="handleBlur" @change="handleChange( scope.row )"></el-input-number>
 		    	</template>
 		    </el-table-column>
 		    <el-table-column prop="price" label="单价" width="180"></el-table-column>
@@ -39,7 +39,8 @@ export default {
   	data() {
 		return {
 			dialogVisible : false,
-			result : null
+			result : null,
+			input_number_value:1
 		}
 	},
 	computed:{
@@ -60,16 +61,19 @@ export default {
 			this.delProduct( this.result );
         	this.dialogVisible = false;
       	},
-      	handleChange( value ) {
-        	console.log(value);
-        	this.numChange( value );
+      	handleBlur(value){
+      		this.input_number_value = value
+      	},
+      	handleChange( data ) {
+        	data.value = this.input_number_value;
+        	this.numChange( data );
       	}
     },
     created(){
         
     },
     mounted(){
-        // console.log(this.totalPrice)
+    	
     }
 }
 </script>

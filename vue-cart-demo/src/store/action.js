@@ -6,19 +6,21 @@ export default {
         })
 	},
 
-    numChange({ commit },value,product) {
+    numChange({ commit }, data) {
         commit('NUM_CHANGE',{
-            id:product.id
+            id:data.id,
+            value:data.value
         })
-    },
-
-	//清除购物车
-    clearAllCart({commit}){
-        commit('CLEAR')
     },
 
 	//删除购物车的指定的商品
     delProduct({commit},product){
         commit('DELETE',product)
     },
+
+    //清空购物车
+    clearAllCart({commit}){
+        commit('CLEAR')
+    }
+
 }
